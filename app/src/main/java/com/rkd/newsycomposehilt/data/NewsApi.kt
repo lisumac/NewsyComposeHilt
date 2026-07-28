@@ -1,5 +1,6 @@
 package com.rkd.newsycomposehilt.data
 
+import com.rkd.newsycomposehilt.data.dto.NewsResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
