@@ -1,4 +1,4 @@
-package com.rkd.newsycomposehilt.utill
+package com.rkd.newsycomposehilt.util
 
 object Constants {
     const val BASE_URL = "https://newsdata.io/api/1/"
