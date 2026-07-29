@@ -1,7 +1,7 @@
 package com.rkd.newsycomposehilt.di
 
-import com.rkd.newsycomposehilt.data.NewsApi
-import com.rkd.newsycomposehilt.utill.Constants
+import com.rkd.newsycomposehilt.data.remote.NewsApi
+import com.rkd.newsycomposehilt.util.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

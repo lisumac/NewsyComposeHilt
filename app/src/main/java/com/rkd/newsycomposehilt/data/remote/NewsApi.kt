@@ -1,9 +1,12 @@
-package com.rkd.newsycomposehilt.data
+package com.rkd.newsycomposehilt.data.remote
 
 import com.rkd.newsycomposehilt.data.dto.NewsResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+/**
+ * NewsApi
+ */
 interface NewsApi {
 
     @GET("latest")

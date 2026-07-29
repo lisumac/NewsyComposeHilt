@@ -1,6 +1,6 @@
 package com.rkd.newsycomposehilt.di
 
-import com.rkd.newsycomposehilt.data.repository.NewsRepository
+import com.rkd.newsycomposehilt.domain.repository.NewsRepository
 import com.rkd.newsycomposehilt.data.repository.NewsRepositoryImpl
 import dagger.Module
 import dagger.hilt.InstallIn
