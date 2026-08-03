@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.rkd.newsycomposehilt.presentation.home.HomeScreen
 import com.rkd.newsycomposehilt.ui.theme.NewsyComposeHiltTheme
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,12 +23,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NewsyComposeHiltTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                HomeScreen()
             }
         }
     }
