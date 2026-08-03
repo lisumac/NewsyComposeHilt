@@ -24,6 +24,9 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.rkd.newsycomposehilt.domain.model.Article
 
+/**
+ * News Card
+ */
 @Composable
 fun NewsCard(article: Article, modifier: Modifier = Modifier) {
     Card(

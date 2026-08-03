@@ -16,6 +16,9 @@ import com.rkd.newsycomposehilt.ui.theme.NewsyComposeHiltTheme
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ *
+ */
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
