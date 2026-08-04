@@ -61,10 +61,7 @@ fun HomeScreen() {
 
                 title = {
 
-                    Text(
-                        "Newsly",
-                        fontWeight = FontWeight.Bold
-                    )
+
 
                 },
 
