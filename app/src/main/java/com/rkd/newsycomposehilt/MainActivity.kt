@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.rkd.newsycomposehilt.presentation.home.HomeRoute
 import com.rkd.newsycomposehilt.presentation.home.HomeScreen
 import com.rkd.newsycomposehilt.ui.theme.NewsyComposeHiltTheme
 import dagger.hilt.EntryPoint
@@ -26,11 +27,12 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NewsyComposeHiltTheme {
-                HomeScreen()
+                HomeRoute()
             }
         }
     }
 }
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {

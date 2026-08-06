@@ -28,15 +28,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.rkd.newsycomposehilt.presentation.Search.SearchBar
 import com.rkd.newsycomposehilt.presentation.home.components.CategoryChip
 import com.rkd.newsycomposehilt.presentation.home.components.FeaturedNewsCard
+import com.rkd.newsycomposehilt.presentation.home.components.LoadingView
 import com.rkd.newsycomposehilt.presentation.home.components.NewsCard
+import kotlinx.coroutines.flow.map
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen() {
+fun HomeScreen( state:HomeState) {
 
     var query by remember {
         mutableStateOf("")
@@ -45,6 +49,7 @@ fun HomeScreen() {
     var selectedCategory by remember {
         mutableStateOf("Technology")
     }
+
 
     val categories = listOf(
         "Technology",
@@ -182,7 +187,7 @@ fun HomeScreen() {
 
                 FeaturedNewsCard(
 
-                    article = dummyArticles.first()
+                    article =state.articles.first()
 
                 )
 
@@ -202,7 +207,7 @@ fun HomeScreen() {
 
             }
 
-            items(dummyArticles) {
+            items(state.articles) {
 
                 NewsCard(
 
@@ -230,5 +235,30 @@ fun HomeScreen() {
 @Preview
 @Composable
 fun previewHomeScreen(){
-    HomeScreen()
+    //HomeScreen()
+}
+@Composable
+fun HomeRoute(
+    viewModel: HomeViewModel = hiltViewModel()
+) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
+
+    when {
+        state.isLoading -> {
+            LoadingView()
+        }
+
+        state.error.isNotEmpty() -> {
+            Text(
+                text = state.error,
+                color = MaterialTheme.colorScheme.error
+            )
+        }
+
+        else -> {
+            HomeScreen(
+                state = state
+            )
+        }
+    }
 }
