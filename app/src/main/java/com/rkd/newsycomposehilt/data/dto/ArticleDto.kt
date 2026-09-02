@@ -1,5 +1,8 @@
 package com.rkd.newsycomposehilt.data.dto
 
+/**
+ * ArticleDto
+ */
 data class ArticleDto(
     val article_id: String?,
 

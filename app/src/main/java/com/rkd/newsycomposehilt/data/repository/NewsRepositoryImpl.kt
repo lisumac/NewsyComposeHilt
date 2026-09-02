@@ -7,6 +7,9 @@ import com.rkd.newsycomposehilt.domain.repository.NewsRepository
 import com.rkd.newsycomposehilt.util.Constants
 import javax.inject.Inject
 
+/**
+ * NewsRepositoryImpl
+ */
 class NewsRepositoryImpl @Inject constructor(
     private val api: NewsApi
 ) : NewsRepository {
