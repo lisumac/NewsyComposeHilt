@@ -30,7 +30,8 @@ fun SplashScreen(
             animationSpec = tween(
                 durationMillis = 800,
                 easing = {
-                    OvershootInterpolator(2f).getInterpolation(it)
+                    OvershootInterpolator(2f)
+                        .getInterpolation(it)
                 }
             )
         )
@@ -46,10 +47,11 @@ fun SplashScreen(
     ) {
 
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_background),
+            painter = painterResource(
+                id = R.drawable.ic_launcher_background
+            ),
             contentDescription = "News Logo",
             modifier = Modifier.scale(scale.value)
         )
-
     }
 }

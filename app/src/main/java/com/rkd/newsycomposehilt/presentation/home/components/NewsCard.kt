@@ -17,6 +17,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -35,13 +36,20 @@ fun NewsCard(article: Article, modifier: Modifier = Modifier) {
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
+            println("IMAGE URL: ${article.imageUrl}")
             AsyncImage(
                 model = article.imageUrl,
                 contentDescription = article.title,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp),
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Crop,
+                onSuccess = {
+                    println("IMAGE LOADED SUCCESSFULLY")
+                },
+                onError = {
+                    println("IMAGE ERROR: ${it.result.throwable}")
+                }
             )
 
             Column() {

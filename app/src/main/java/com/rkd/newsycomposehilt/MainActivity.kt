@@ -11,8 +11,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.rkd.newsycomposehilt.presentation.home.HomeRoute
 import com.rkd.newsycomposehilt.presentation.home.HomeScreen
+import com.rkd.newsycomposehilt.presentation.splashScreen.SplashScreen
 import com.rkd.newsycomposehilt.ui.theme.NewsyComposeHiltTheme
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,7 +31,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NewsyComposeHiltTheme {
-                HomeRoute()
+              //  HomeRoute()
+                NavGraph()
             }
         }
     }
@@ -47,5 +52,37 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 fun GreetingPreview() {
     NewsyComposeHiltTheme {
         Greeting("Android")
+    }
+}
+
+@Composable
+fun NavGraph() {
+
+    val navController = rememberNavController()
+
+    NavHost(
+        navController = navController,
+        startDestination = "splash"
+    ) {
+
+        composable("splash") {
+
+            SplashScreen(
+                onNavigateToHome = {
+
+                    navController.navigate("home") {
+
+                        popUpTo("splash") {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
+        }
+
+        composable("home") {
+
+            HomeRoute()
+        }
     }
 }
