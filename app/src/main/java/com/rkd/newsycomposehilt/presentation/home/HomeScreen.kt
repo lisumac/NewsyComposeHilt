@@ -30,6 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.rkd.newsycomposehilt.domain.model.Article
 import com.rkd.newsycomposehilt.presentation.Search.SearchBar
 import com.rkd.newsycomposehilt.presentation.home.components.CategoryChip
 import com.rkd.newsycomposehilt.presentation.home.components.FeaturedNewsCard
@@ -40,7 +41,7 @@ import kotlinx.coroutines.flow.map
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen( state:HomeState) {
+fun HomeScreen( state:HomeState,  onArticleClick: (Article) -> Unit) {
 
     var query by remember {
         mutableStateOf("")
@@ -207,13 +208,17 @@ fun HomeScreen( state:HomeState) {
 
             }
 
-            items(state.articles) {
+            items(state.articles) {articles->
 
                 NewsCard(
 
-                    article = it,
+                    article = articles,
 
-                    modifier = Modifier.padding(horizontal = 16.dp)
+                    modifier = Modifier.padding(horizontal = 16.dp),
+                    onClick = {
+                        onArticleClick(articles)
+                    }
+
 
                 )
 
@@ -239,7 +244,8 @@ fun previewHomeScreen(){
 }
 @Composable
 fun HomeRoute(
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
+    onArticleClick: (Article) -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
@@ -257,7 +263,8 @@ fun HomeRoute(
 
         else -> {
             HomeScreen(
-                state = state
+                state = state,
+                onArticleClick = onArticleClick
             )
         }
     }

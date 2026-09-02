@@ -1,5 +1,6 @@
 package com.rkd.newsycomposehilt.presentation.home.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -29,9 +30,11 @@ import com.rkd.newsycomposehilt.domain.model.Article
  * News Card
  */
 @Composable
-fun NewsCard(article: Article, modifier: Modifier = Modifier) {
+fun NewsCard(article: Article, modifier: Modifier = Modifier, onClick: () -> Unit) {
     Card(
-        modifier.fillMaxWidth(),
+        modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick),
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
