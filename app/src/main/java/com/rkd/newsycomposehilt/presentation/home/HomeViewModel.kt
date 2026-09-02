@@ -3,6 +3,7 @@ package com.rkd.newsycomposehilt.presentation.home
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.rkd.newsycomposehilt.domain.model.Article
 import com.rkd.newsycomposehilt.domain.repository.NewsRepository
 import com.rkd.newsycomposehilt.domain.usercase.GetNewsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -43,6 +44,11 @@ class HomeViewModel @Inject constructor(
                     error = e.message ?: "Unknown Error"
                 )
             }
+        }
+    }
+    fun getArticleById(id: String): Article? {
+        return state.value.articles.find {
+            it.id == id
         }
     }
 }
